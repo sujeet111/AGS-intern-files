@@ -7,6 +7,6 @@ mycursor.execute("INSERT INTO table2 SELECT * FROM table1")
 
 mycursor.execute("select * from table2")
 
-query2 = mycursor.fetchall()
-for i in query2:
+query = mycursor.fetchall()
+for i in query:
     print(i)
