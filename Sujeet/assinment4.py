@@ -7,13 +7,17 @@ conn = pyodbc.connect('Driver={SQL Server};''Server=DESKTOP-CAFAM2K\SUJEETPATIL;
 mycursor = conn.cursor()
 mycursor2 = conn.cursor()
 
-data = pd.read_csv(path)
-df = pd.DataFrame(data, columns= ['Name','Country'])
+data = pd.read_csv(r"C:\Users\sujeet\Desktop\Projects\AGS\AGS-intern-files\Sujeet\person.csv")
+#df = pd.DataFrame(data, columns= ['Name','Country'])
+print(data.Name)
 
-for row in df.itertuples():
+for row in data.itertuples():
     mycursor.execute('INSERT INTO csv(name, country)VALUES (?,?)',row.Name, row.Country)
-    conn.commit()
+    mycursor.commit()
+mycursor.close()
 
 mycursor2.execute("select * from csv")
-for row in mycursor:
+for row in mycursor2:
     print(row)
+mycursor2.close()
+conn.close()
