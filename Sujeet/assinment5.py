@@ -7,6 +7,5 @@ conn = pyodbc.connect('Driver={SQL Server};''Server=DESKTOP-CAFAM2K\SUJEETPATIL;
 mycursor = conn.cursor()
 mycursor2 = conn.cursor()
 
-data = pd.read_csv(r"C:\Users\sujeet\Desktop\Projects\AGS\AGS-intern-files\Sujeet\person.csv")
-#df = pd.DataFrame(data, columns= ['Name','Country'])
+data = pd.read_csv(r"C:\Users\sujeet\Desktop\Projects\AGS\AGS-intern-files\Sujeet\data.csv")
 print(data)
