@@ -9,15 +9,15 @@ for row in data.itertuples():
     var = str(row.ID)
     if var[0] == '4':
         amount = int(row.Total_Amount) - (int(row.Total_Amount) * 2 / 100)
-        mycursor.execute('INSERT INTO Table_1(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount, 2)
+        mycursor.execute('INSERT INTO Table_1(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount, int(row.Total_Amount) * 2 / 100)
 
     elif var[0] == '5':
         amount = int(row.Total_Amount) - (int(row.Total_Amount) * 3 / 100)      
-        mycursor.execute('INSERT INTO Table_2(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount , 3)
+        mycursor.execute('INSERT INTO Table_2(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount , int(row.Total_Amount) * 3 / 100)
 
     elif var[0] == '6':
         amount = int(row.Total_Amount) - (int(row.Total_Amount) * 4 / 100)
-        mycursor.execute('INSERT INTO Table_3(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount, 4)
+        mycursor.execute('INSERT INTO Table_3(NAME, ID, Total_Amount, discount)VALUES (?,?,?,?)',row.NAME, row.ID, amount, int(row.Total_Amount) * 4 / 100)
     else:
        print("pass")
 mycursor.close()
