@@ -9,7 +9,7 @@ import pyodbc as db
 import pandas as pd
 
 conn = db.connect('Driver={SQL Server};''Server=DESKTOP-VI5MRAI\GAURAVPATIL;''Database=sample;''Trusted_Connection=yes;')
-c = conn.cursor()
+#c = conn.cursor()
 #c.execute("Drop Table Table_1")
 #print("dropped")
 
@@ -48,6 +48,7 @@ for row in data.itertuples():
     cursor.commit()
     
 cursor.close()
+
 print("\n\nTable 1")
 c = conn.cursor()
 d = c.execute("select * from Table_1")
