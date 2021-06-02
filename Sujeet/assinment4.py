@@ -10,8 +10,9 @@ data = pd.read_csv(r'C:\Users\sujeet\Desktop\Projects\AGS\AGS-intern-files\Sujee
 df = pd.DataFrame(data, columns= ['Name','Country'])
 
 for row in df.itertuples():
-    mycursor.execute('''INSERT INTO csv(name, country)VALUES (?,?)''',row.Name, row.Country)
+    mycursor.execute('INSERT INTO csv(name, country)VALUES (?,?)',row.Name, row.Country)
+    conn.commit()
+
 mycursor.execute("select * from csv")
 for row in mycursor:
     print(row)
-conn.commit()
