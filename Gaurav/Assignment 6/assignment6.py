@@ -6,6 +6,7 @@ Created on Wed Jun  2 17:47:33 2021
 """
 import pyodbc as db
 import pandas as pd
+import time as t
 
 conn = db.connect('Driver={SQL Server};''Server=DESKTOP-VI5MRAI\GAURAVPATIL;''Database=sample;''Trusted_Connection=yes;')
 c = conn.cursor()
@@ -28,9 +29,10 @@ checktable("Table_1")
 checktable("Table_2")
 checktable("Table_3")
     
-data = pd.read_csv("C:\Office\AGS - Internship\AGS-intern-files\Gaurav\Assignment 6\\data.csv")
+data = pd.read_csv("C:\Office\AGS - Internship\AGS-intern-files\Gaurav\Assignment 6\\data1.csv")
 
 cursor = conn.cursor()
+old = t.time()
 
 for row in data.itertuples():
     b = str(row.ID)
@@ -43,7 +45,8 @@ for row in data.itertuples():
     cursor.commit()
     
 cursor.close()
-
+required = t.time()-old
+'''
 print("\n\nTable 1")
 sql_query = pd.read_sql_query('select * from Table_1',conn)
 print(sql_query)
@@ -55,6 +58,7 @@ print(sql_query)
 print("\n\nTable 3")
 sql_query = pd.read_sql_query('select * from Table_3',conn)
 print(sql_query)
-
+'''
+print("\n\nTime Required is : ",required)
 conn.close()
   
