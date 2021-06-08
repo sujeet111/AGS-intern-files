@@ -1,6 +1,6 @@
 use sample
 CREATE TABLE ID_Table(NAME varchar(50),tableID varchar(50));
-select * from Table_3
+select * from Table_1
 
 drop table Table_1
 drop table Table_2
