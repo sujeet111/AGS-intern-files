@@ -5,25 +5,25 @@ data = pd.read_csv (r'C:\Users\Nikhil\Desktop\ags_intern\dataset.csv')
 studio = pyodbc.connect('Driver={SQL Server};''Server=DESKTOP-9T4GEVI;''Database=patil;''Trusted_Connection=yes;')
 
 cursor = studio.cursor()
-cursor1 = studio.cursor()
 
 #data = pd.DataFrame(data, columns= ['ID','Name'] )
 
 for row in data.itertuples():
     var = str(row.ID)
     if var[0] == '4':
-        Totalamount = int(row.TotalAmount) - (int(row.TotalAmount) * 2 / 100)
-        cursor.execute('INSERT INTO Table_01(ID, Name, Total_Amount, discount)VALUES (?,?)',row.ID, row.Name, row.Totalamount, int(row.TotalAmount) * 2 / 100)
+        discount = int(row.TotalAmount) - (int(row.TotalAmount) * 2 / 100)
+        cursor.execute('INSERT INTO Table_01(ID, Name, TotalAmount, discount)VALUES (?,?,?,?)',row.ID, row.Name, row.TotalAmount, int(row.TotalAmount) * 2 / 100)
+        print(discount)
        
 
     elif var[0] == '5':
-        Totalamount = int(row.TotalAmount) - (int(row.TotalAmount) * 3 / 100)  
-        cursor.execute('INSERT INTO Table_02(ID, Name, Total_Amount, discount)VALUES (?,?)',row.ID, row.Name, row.Totalamount, int(row.TotalAmount) * 3 / 100)
+        TotalAmount = int(row.TotalAmount) - (int(row.TotalAmount) * 3 / 100)
+        cursor.execute('INSERT INTO Table_02(ID, Name, TotalAmount, discount)VALUES (?,?,?,?)',row.ID, row.Name, row.TotalAmount, int(row.TotalAmount) * 3 / 100)
      
     
     elif var[0] == '6': 
-        Totalamount = int(row.TotalAmount) - (int(row.TotalAmount) * 4 / 100)  
-        cursor.execute('INSERT INTO Table_03(ID, Name, TotalAmount, discount)VALUES (?,?)',row.ID, row.Name, row.Totalamount, int(row.TotalAmount) * 4 / 100)
+        TotalAmount = int(row.TotalAmount) - (int(row.TotalAmount) * 4 / 100)  
+        cursor.execute('INSERT INTO Table_03(ID, Name, TotalAmount, discount)VALUES (?,?,?,?)',row.ID, row.Name, row.TotalAmount, int(row.TotalAmount) * 4 / 100)
 
 
     else:
