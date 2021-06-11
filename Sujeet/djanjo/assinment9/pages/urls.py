@@ -1,6 +1,6 @@
 from django.urls import path
 from django.urls.conf import include
-from .views import upload
+from .views import index
 urlpatterns = [
-    path('', upload, name='Home')
+    path('', index, name='Home')
 ]
