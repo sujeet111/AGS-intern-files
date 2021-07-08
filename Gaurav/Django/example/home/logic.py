@@ -25,7 +25,7 @@ def executeNew1(dataset) :
     print("Thread 1 starting time : ",t.time())
     #data1 = pd.read_csv("C:\Office\AGS - Internship\AGS-intern-files\Gaurav\Assignment 6\\"+dataset+".csv")
     data1 = pd.read_csv(dataset,delimiter='|')
-    #data1 = data1.iloc[:50000]
+    data1 = data1.iloc[:50000]
     cursor = con.cursor()
     old = t.time()
     
@@ -47,7 +47,7 @@ def executeNew1(dataset) :
 def executeNew2(dataset) :
     conn = db.connect('Driver={SQL Server};''Server=DESKTOP-VI5MRAI\GAURAVPATIL;''Database=sample;''Trusted_Connection=yes;')
     data = pd.read_csv(dataset,delimiter='|')
-    #data = data.iloc[50000:]
+    data = data.iloc[50000:]
     print("Thread 2 starting time : ",t.time())
     curso = conn.cursor()
     old1 = t.time()
@@ -78,7 +78,7 @@ def executefile(dataset):
 
         e = t.time()
 
-        #_thread.start_new_thread(executeNew1,(dataset,))
+        _thread.start_new_thread(executeNew1,(dataset,))
         #_thread.start_new_thread(executeNew2,(dataset,))
         executeNew2(dataset)
         print("time needed is ",t.time()-e)
